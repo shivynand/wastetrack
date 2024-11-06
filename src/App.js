@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import CabinCrewInterface from './components/CabinCrewInterface';
+import WasteLogForm from './components/WasteLogForm';
+import FlightStats from './components/FlightStats';
+import RealTimeDashboard from './components/RealTimeDashboard';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={CabinCrewInterface} />
+        <Route path="/log-waste" component={WasteLogForm} />
+        <Route path="/flight-stats" component={FlightStats} />
+        <Route path="/dashboard" component={RealTimeDashboard} />
+      </Switch>
+    </Router>
   );
 }
 
