@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
-import { useRouter } from 'next/router';
+import { useNavigate } from 'react-router-dom';
 
 const CabinCrewInterface = () => {
   const [action, setAction] = useState(null);
-  const router = useRouter();
+  const navigate = useNavigate();
 
   const handleActionChange = (e) => {
     setAction(e.target.value);
   };
 
   const handleLogWaste = () => {
-    router.push('/log-waste');
+    navigate('/log-waste');
   };
 
   const handleViewStats = () => {
-    router.push('/flight-stats');
+    navigate('/flight-stats');
   };
 
   return (

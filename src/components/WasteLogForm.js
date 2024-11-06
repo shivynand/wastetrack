@@ -7,8 +7,30 @@ const WasteLogForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     // Implement logic to log waste here
-    console.log('Waste logged:', { wasteType, quantity, location });
+    const wasteData = {
+      type: wasteType,
+      quantity: quantity,
+      location: location
+    };
+    
+    // Example: Send waste data to API or database
+    fetch('/api/log-waste', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(wasteData),
+    })
+    .then(response => response.json())
+    .then(data => console.log('Waste logged successfully:', data))
+    .catch(error => console.error('Error logging waste:', error));
+    
+    // Clear form fields after submission
+    setWasteType('');
+    setQuantity('');
+    setLocation('');
   };
 
   return (
